@@ -1,13 +1,21 @@
 require('./config/config')
 const express = require('express')
 const mongoose = require('mongoose');
-const path = require('path');
+const cors = require("cors");
 
 const app = express();
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+//cors
+app.use(
+    cors({
+        origin: true,
+        credentials: true
+    })
+);
 
 // routes
 app.use(require('./routes'));
